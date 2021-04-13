@@ -2,15 +2,15 @@
 
 
 var input = document.getElementById("input_recherche")
-
+var div_a_cliquer;
 
 
 
 input.addEventListener("keyup", function(){
 
     donnees = document.getElementById("input_recherche").value
-    console.log(donnees.length)
-    console.log(donnees)
+    // console.log(donnees.length)
+    // console.log(donnees)
 
     if(donnees.length>1)
     {
@@ -25,8 +25,8 @@ input.addEventListener("keyup", function(){
           
             success : function(dataType){
               
-                console.log(dataType)
-                console.log(dataType.length)
+                // console.log(dataType)
+                // console.log(dataType.length)
                 // console.log(dataType[0].id)
                 
                 // console.log(data[0]["id"])
@@ -35,7 +35,7 @@ input.addEventListener("keyup", function(){
                 let i = 0;
                 while ( i < dataType.length)
                 {
-                    $('#resultat_autocompl').append("<div class='result_auto' id="+i+">"+dataType[i].nom + " " + dataType[i].prénom +'</div>');
+                    $('#resultat_autocompl').append("<div name="+dataType[i].id+" class='result_auto' id="+i+">"+dataType[i].nom + " " + dataType[i].prénom +'</div>');
                     i++
                 }
      
@@ -45,6 +45,45 @@ input.addEventListener("keyup", function(){
 
     }
 
+
+    finChargement()
+
+    
 })
 
+
+function finChargement() {
+    setTimeout(function() {
+
+        div_generees_boucle = document.querySelectorAll("#resultat_autocompl  div") 
+
+        for (var i = 0, len = div_generees_boucle.length; i < len; i++) {
+
+            div_generees_boucle[i].addEventListener('click', function(e){
+                console.log(e)
+                console.log(e.path[0])
+
+                // id du sportif
+                console.log(e.path[0].attributes[0].nodeValue)
+
+                window.location.replace("recherche.php");
+            });
+        }
+
+
+
+    }, 80); // on retarde l'exécution de 1 seconde
+}
+
+
+
+
+
+
+
+// html = document.querySelector('html');
+// html.addEventListener('click',function(){
+//     $('#resultat_autocompl').empty();
+
+// })
 

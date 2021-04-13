@@ -2,6 +2,9 @@
     margin : 0px;
     padding: 0px;
 }
+html{
+    height: 100vh;
+}
 
 #div_recherche{
     display: flex;
@@ -52,7 +55,12 @@ input:focus{
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 15px;
+
 }
 .result_auto:hover{
     cursor: pointer;
+    background-color: rgb(240, 240, 240);
 }
+
+
