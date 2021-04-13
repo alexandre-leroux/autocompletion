@@ -26,11 +26,18 @@ input.addEventListener("keyup", function(){
             success : function(dataType){
               
                 console.log(dataType)
-                console.log(dataType[0].id)
+                console.log(dataType.length)
+                // console.log(dataType[0].id)
                 
                 // console.log(data[0]["id"])
-         
-              $('#resultat_autocompl').append(dataType[0].id)
+
+              $('#resultat_autocompl').empty();
+                let i = 0;
+                while ( i < dataType.length)
+                {
+                    $('#resultat_autocompl').append("<div class='result_auto' id="+i+">"+dataType[i].nom + " " + dataType[i].prénom +'</div>');
+                    i++
+                }
      
             
             }})
@@ -39,3 +46,5 @@ input.addEventListener("keyup", function(){
     }
 
 })
+
+

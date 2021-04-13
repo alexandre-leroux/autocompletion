@@ -13,13 +13,19 @@
 <main>
 
 
-
-<div id="div_recherche">
     <h1>MA RECHERCHE.COM</h1>
 
-    <input id="input_recherche" type="text" nom="recherche">
-    <div id="resultat_autocompl"></div>
+<div id="div_recherche">
+
+
+    <div>
+    <div id="conteneur_input_resultat_autocompl">
+        <input id="input_recherche" type="text" nom="recherche">
+        <div id="resultat_autocompl"></div>
+    </div>
+    </div>
     <button>Recherche</button>
+
 </div>
 
 
