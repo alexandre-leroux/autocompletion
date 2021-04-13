@@ -9,9 +9,24 @@
     }
 
 
-    $bdd->prepare('SELECT * FROM sportifs WHERE id = ?') 
-    
+    $motclef = 'fe';
 
+    $req_search = $bdd->prepare("SELECT * FROM sportifs WHERE nom LIKE ? OR  prénom LIKE ? ");
+    $req_search->execute(array("%$motclef%","%$motclef%" ));
+
+    $res = $req_search->fetchAll();
+    // echo '<pre>';
+    // var_dump($res);
+    // echo '</pre>';
+
+
+
+    $i = 0;
+    while ( $res[$i] != null)
+    {
+        echo ( $res[$i]['prénom']);
+        $i++;
+    }
 ?>
 
 
@@ -31,19 +46,39 @@
 <main>
 
 
-
-
-<div id="div_recherche">
     <h1>MA RECHERCHE.COM</h1>
 
-    <input type="text" nom="recherche">
+<div id="div_recherche">
 
+
+    <div>
+    <div id="conteneur_input_resultat_autocompl">
+        <input id="input_recherche" type="text" nom="recherche">
+        <div id="resultat_autocompl"></div>
+    </div>
+    </div>
     <button>Recherche</button>
+
 </div>
 
 
+<div id="conteneur_resultat_recherche">
+    <?php
+    $i = 0;
+        while ( $res[$i] != null)
+        {?>
+            <div>
+                <a id="titre_result_recherche" href="element.php?id=<?=$res[$i]['id'];?>"><?=$res[$i]['prénom']; ?> <?=$res[$i]['nom']; ?></a>
+                <p id="resume_bio_result_recherche"><?=$res[$i]['bio']; ?></p>
+            
+            </div>
 
+        <?php  $i++;
+        }
 
+    ?>
+
+</div>
 
 
 
