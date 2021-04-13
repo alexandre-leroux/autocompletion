@@ -9,7 +9,10 @@
     }
 
 
-    $motclef = 'rafa';
+    $motclef = $_GET['key'];
+    // $motclef = 'Pete Sampras';
+    // var_dump($motclef);
+    // var_dump($_GET['key']);
 
     $req_search = $bdd->prepare("SELECT * FROM sportifs WHERE nom LIKE ? OR  prénom LIKE ?  OR  bio LIKE ?  ");
     $req_search->execute(array("%$motclef%","%$motclef%","%$motclef%" ));
@@ -21,12 +24,6 @@
 
 
 
-    $i = 0;
-    while ( $res[$i] != null)
-    {
-        echo ( $res[$i]['prénom']);
-        $i++;
-    }
 ?>
 
 

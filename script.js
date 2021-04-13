@@ -35,7 +35,7 @@ input.addEventListener("keyup", function(){
                 let i = 0;
                 while ( i < dataType.length)
                 {
-                    $('#resultat_autocompl').append("<div name="+dataType[i].id+" class='result_auto' id="+i+">"+dataType[i].nom + " " + dataType[i].prénom +'</div>');
+                    $('#resultat_autocompl').append("<div name="+dataType[i].id+" class='result_auto' id="+i+">"+dataType[i].prénom + " " + dataType[i].nom +'</div>');
                     i++
                 }
      
@@ -65,8 +65,10 @@ function finChargement() {
 
                 // id du sportif
                 console.log(e.path[0].attributes[0].nodeValue)
-
-                window.location.replace("recherche.php");
+                console.log(e.path[0].innerHTML)
+                var get = e.path[0].innerHTML
+                console.log(get)
+                window.location.replace("recherche.php?key="+get+"");
             });
         }
 
