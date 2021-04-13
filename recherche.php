@@ -9,20 +9,19 @@
     }
 
 
-    $motclef = $_GET['key'];
     // $motclef = 'Pete Sampras';
     // var_dump($motclef);
     // var_dump($_GET['key']);
-
-    $req_search = $bdd->prepare("SELECT * FROM sportifs WHERE nom LIKE ? OR  prénom LIKE ?  OR  bio LIKE ?  ");
-    $req_search->execute(array("%$motclef%","%$motclef%","%$motclef%" ));
+    // $req_search = $bdd->prepare("SELECT * FROM sportifs WHERE nom LIKE ? OR  prénom LIKE ?  OR  bio LIKE ?  ");
+    // $req_search->execute(array("%$motclef%","%$motclef%","%$motclef%" ));
+    // $res = $req_search->fetchAll();
+    
+    $motclef = $_GET['key'];
+    $motcle_secure = htmlspecialchars($motclef);
+    $req_search = $bdd->query(" SELECT * FROM sportifs WHERE MATCH (nom,prénom,bio) AGAINST ('$motcle_secure' IN NATURAL LANGUAGE MODE);  ");
+    // $req_search->execute(array("%$motclef%" ));
 
     $res = $req_search->fetchAll();
-    // echo '<pre>';
-    // var_dump($res);
-    // echo '</pre>';
-
-
 
 ?>
 
