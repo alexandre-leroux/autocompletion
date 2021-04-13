@@ -17,11 +17,13 @@
 
 
 
-$motclef = 'zve';
+    $motclef = 'na';
 
 
-    $req_search = $bdd->query(" SELECT * FROM sportifs WHERE nom LIKE '%$motclef%' OR  prénom LIKE '%$motclef%' ");
-                               
+
+    $req_search = $bdd->prepare("SELECT * FROM sportifs WHERE nom LIKE ? OR  prénom LIKE ? ");
+    $req_search->execute(array("%$motclef%","%$motclef%" ));
+
 
     $res = $req_search->fetchAll();
 
