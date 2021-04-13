@@ -9,10 +9,10 @@
     }
 
 
-    $motclef = 'fe';
+    $motclef = 'rafa';
 
-    $req_search = $bdd->prepare("SELECT * FROM sportifs WHERE nom LIKE ? OR  prénom LIKE ? ");
-    $req_search->execute(array("%$motclef%","%$motclef%" ));
+    $req_search = $bdd->prepare("SELECT * FROM sportifs WHERE nom LIKE ? OR  prénom LIKE ?  OR  bio LIKE ?  ");
+    $req_search->execute(array("%$motclef%","%$motclef%","%$motclef%" ));
 
     $res = $req_search->fetchAll();
     // echo '<pre>';
