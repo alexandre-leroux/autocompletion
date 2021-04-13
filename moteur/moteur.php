@@ -12,14 +12,14 @@
         die('Erreur : ' . $e->getMessage());
     }
 
-    var_dump($bdd);
-    // var_dump($e);
 
 
 
-    $motclef = 'na';
+    // $motclef = 'na';
 
-
+    $motclef = $_POST['motclef'];
+    // var_dump($_POST['motclef']);
+    // echo '</br>';
 
     $req_search = $bdd->prepare("SELECT * FROM sportifs WHERE nom LIKE ? OR  prénom LIKE ? ");
     $req_search->execute(array("%$motclef%","%$motclef%" ));
@@ -27,4 +27,5 @@
 
     $res = $req_search->fetchAll();
 
-    var_dump($res);
+    echo json_encode($res);
+    // var_dump($res);

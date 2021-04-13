@@ -17,8 +17,8 @@
 <div id="div_recherche">
     <h1>MA RECHERCHE.COM</h1>
 
-    <input type="text" nom="recherche">
-
+    <input id="input_recherche" type="text" nom="recherche">
+    <div id="resultat_autocompl"></div>
     <button>Recherche</button>
 </div>
 
