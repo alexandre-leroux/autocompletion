@@ -11,11 +11,12 @@ input.addEventListener("keyup", function(){
     donnees = document.getElementById("input_recherche").value
     // console.log(donnees.length)
     // console.log(donnees)
-
+    $('#resultat_autocompl').empty();
     if(donnees.length>1)
     {
 
         console.log('ok')
+        
 
         $.ajax({
             url: "moteur/moteur.php",
@@ -25,22 +26,34 @@ input.addEventListener("keyup", function(){
           
             success : function(dataType){
               
-                // console.log(dataType)
+                console.log(dataType)
                 // console.log(dataType.length)
-                // console.log(dataType[0].id)
                 
-                // console.log(data[0]["id"])
+                
+                console.log('dans succes')
 
-              $('#resultat_autocompl').empty();
+              
                 let i = 0;
                 while ( i < dataType.length)
-                {
-                    $('#resultat_autocompl').append("<div name="+dataType[i].id+" class='result_auto' id="+i+">"+dataType[i].prénom + " " + dataType[i].nom +'</div>');
+                {console.log(dataType[i][3])
+                    $('#resultat_autocompl').append("<div  class='result_auto'>"+dataType[i].nom_complet +"</div>");
                     i++
                 }
      
             
-            }})
+            },
+        
+            error: function (request, status, error) {
+                console.log(request.responseText);
+            },
+        
+            complete : function(resultat, statut){
+                console.log(resultat);
+                console.log(statut);
+            }
+        
+        
+        })
 
 
     }

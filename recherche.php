@@ -18,7 +18,7 @@
     
     $motclef = $_GET['key'];
     $motcle_secure = htmlspecialchars($motclef);
-    $req_search = $bdd->query(" SELECT * FROM sportifs WHERE MATCH (nom,prénom,bio) AGAINST ('$motcle_secure' IN NATURAL LANGUAGE MODE);  ");
+    $req_search = $bdd->query(" SELECT * FROM sportifs WHERE MATCH (nom,prénom,nom_complet,bio) AGAINST ('$motcle_secure' IN NATURAL LANGUAGE MODE);  ");
     // $req_search->execute(array("%$motclef%" ));
 
     $res = $req_search->fetchAll();
