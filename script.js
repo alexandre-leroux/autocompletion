@@ -31,11 +31,12 @@ input.addEventListener("keyup", function(){
                 
                 
                 console.log('dans succes')
+                console.log(dataType)
 
               
                 let i = 0;
                 while ( i < dataType.length)
-                {console.log(dataType[i][3])
+                {
                     $('#resultat_autocompl').append("<div  class='result_auto'>"+dataType[i].nom_complet +"</div>");
                     i++
                 }
@@ -48,8 +49,8 @@ input.addEventListener("keyup", function(){
             },
         
             complete : function(resultat, statut){
-                console.log(resultat);
-                console.log(statut);
+                // console.log(resultat);
+                // console.log(statut);
             }
         
         

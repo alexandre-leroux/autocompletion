@@ -15,24 +15,6 @@
 
 
 
-    // // $motclef = 'na';
-
-    // $motclef = $_POST['motclef'];
-    // // var_dump($_POST['motclef']);
-    // // echo '</br>';
-
-    // $req_search = $bdd->prepare("SELECT * FROM sportifs WHERE nom LIKE ? OR  prénom LIKE ? ");
-    // $req_search->execute(array("%$motclef%","%$motclef%" ));
-
-
-    // $res = $req_search->fetchAll();
-
-    // echo json_encode($res);
-    // // var_dump($res);
-
-
-
-
     $motclef = $_POST['motclef'];
     // var_dump($_POST['motclef']);
     // echo '</br>';
@@ -56,4 +38,16 @@
     }
 
 
+
+
+
+    // $motclef = $_GET['key'];
+    // $motcle_secure = htmlspecialchars($motclef);
+    // $req_search = $bdd->query(" SELECT * FROM sportifs WHERE MATCH (nom,prénom,nom_complet,bio) AGAINST ('$motcle_secure' IN NATURAL LANGUAGE MODE);  ");
+    // // $req_search->execute(array("%$motclef%" ));
+
+    // $res = $req_search->fetch();
+    // // var_dump($res);
+    //     // echo ($res);
+    // echo json_encode($res);
     
