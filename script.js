@@ -85,16 +85,30 @@ function finChargement() {
 
 
 
-// -----------------------------------------------------------------redirection get vers la page recherche.php sur le click du boutton
-boutton = document.getElementById("boutton_recherche").addEventListener('click', function(){
+// -------------------------------------redirection get vers la page recherche.php sur le click du boutton 
+// ---------- + evenements pour vider autocomplétion en clickant dans la page + 
+// ---------- + recherche impossible sir input vide
+document.addEventListener('click', function(e){
 
-    mot_clef_input = document.getElementById("input_recherche").value
-    console.log(mot_clef_input)
-    window.location.replace("recherche.php?key="+mot_clef_input+"");
+        if (e.toElement.id == "input_recherche")
+        {
+        }
+        else if (e.toElement.id == "boutton_recherche")
+        {
+            mot_clef_input = document.getElementById("input_recherche").value;
+            if(mot_clef_input == "")
+            {
+
+            }
+            else
+            {
+                  window.location.replace("recherche.php?key="+mot_clef_input+"");
+            }
+        }
+        else
+        {
+            $('#resultat_autocompl').empty();
+        }
+
 })
-
-
-
-
-
 
