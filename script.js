@@ -2,70 +2,66 @@
 
 
 var input = document.getElementById("input_recherche")
-var div_a_cliquer;
 
+// ------------------------------------------------fonction sur les touches, lance une recherche dans la bdd à chaque touche utilisée
+input.addEventListener("keyup", function(e){
 
-
-input.addEventListener("keyup", function(){
-
-    donnees = document.getElementById("input_recherche").value
-    // console.log(donnees.length)
-    // console.log(donnees)
-    $('#resultat_autocompl').empty();
-    if(donnees.length>1)
+    console.log(e)
+    if(e.code == 'Enter' || e.code == "NumpadEnter" )
     {
+        mot_clef_input = document.getElementById("input_recherche").value
+        console.log(mot_clef_input)
+        window.location.replace("recherche.php?key="+mot_clef_input+"");
+    }
+    else
+    {
+        donnees = document.getElementById("input_recherche").value
 
-        console.log('ok')
-        
-
-        $.ajax({
-            url: "moteur/moteur.php",
-            type: "POST",
-            data: {"motclef":donnees},
-            dataType: "json",
-          
-            success : function(dataType){
+        if(donnees.length>1)
+        {
+            $.ajax({
+                url: "moteur/moteur_autocompletion.php",
+                type: "POST",
+                data: {"motclef":donnees},
+                dataType: "json",
               
-                console.log(dataType)
-                // console.log(dataType.length)
+                success : function(dataType){
+    
+                    $('#resultat_autocompl').empty();
+                    let i = 0;
+                    while ( i < dataType.length)
+                    {
+                        $('#resultat_autocompl').append("<div  class='result_auto'>"+dataType[i].nom_complet +"</div>");
+                        i++
+                    }
                 
-                
-                console.log('dans succes')
-                console.log(dataType)
-
-              
-                let i = 0;
-                while ( i < dataType.length)
-                {
-                    $('#resultat_autocompl').append("<div  class='result_auto'>"+dataType[i].nom_complet +"</div>");
-                    i++
-                }
-     
+                },
             
-            },
-        
-            error: function (request, status, error) {
-                console.log(request.responseText);
-            },
-        
-            complete : function(resultat, statut){
-                // console.log(resultat);
-                // console.log(statut);
-            }
-        
-        
-        })
-
+                error: function (request, status, error) {
+                    console.log(request.responseText);
+                },
+            
+                complete : function(resultat, statut){
+                    // console.log(resultat);
+                    // console.log(statut);
+                }
+            
+            })
+    
+        }
+        else
+        {
+            $('#resultat_autocompl').empty();
+    
+        }
+    
+        finChargement()
 
     }
 
-
-    finChargement()
-
-    
 })
 
-
+// ----------------------------------------------recupère les div crées sur la recherche, en autocompletion. Delay pour l'excuter en dernier, une fois les DOM modifié
 function finChargement() {
     setTimeout(function() {
 
@@ -74,19 +70,12 @@ function finChargement() {
         for (var i = 0, len = div_generees_boucle.length; i < len; i++) {
 
             div_generees_boucle[i].addEventListener('click', function(e){
-                console.log(e)
-                console.log(e.path[0])
 
-                // id du sportif
-                console.log(e.path[0].attributes[0].nodeValue)
-                console.log(e.path[0].innerHTML)
                 var get = e.path[0].innerHTML
-                console.log(get)
                 window.location.replace("recherche.php?key="+get+"");
+
             });
         }
-
-
 
     }, 80); // on retarde l'exécution de 1 seconde
 }
@@ -96,10 +85,16 @@ function finChargement() {
 
 
 
+// -----------------------------------------------------------------redirection get vers la page recherche.php sur le click du boutton
+boutton = document.getElementById("boutton_recherche").addEventListener('click', function(){
 
-// html = document.querySelector('html');
-// html.addEventListener('click',function(){
-//     $('#resultat_autocompl').empty();
+    mot_clef_input = document.getElementById("input_recherche").value
+    console.log(mot_clef_input)
+    window.location.replace("recherche.php?key="+mot_clef_input+"");
+})
 
-// })
+
+
+
+
 

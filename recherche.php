@@ -1,27 +1,7 @@
 <?php 
-    try 
-    {
-        $bdd = new PDO('mysql:host=localhost;dbname=autocompletion;charset=utf8', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-    }
-    catch (Exception $e)
-    {
-        die('Erreur : ' . $e->getMessage());
-    }
+include('moteur/moteur_recherche_get.php');
+$res = moteur_de_recherche_get();
 
-
-    // $motclef = 'Pete Sampras';
-    // var_dump($motclef);
-    // var_dump($_GET['key']);
-    // $req_search = $bdd->prepare("SELECT * FROM sportifs WHERE nom LIKE ? OR  prénom LIKE ?  OR  bio LIKE ?  ");
-    // $req_search->execute(array("%$motclef%","%$motclef%","%$motclef%" ));
-    // $res = $req_search->fetchAll();
-    
-    $motclef = $_GET['key'];
-    $motcle_secure = htmlspecialchars($motclef);
-    $req_search = $bdd->query(" SELECT * FROM sportifs WHERE MATCH (nom,prénom,nom_complet,bio) AGAINST ('$motcle_secure' IN NATURAL LANGUAGE MODE);  ");
-    // $req_search->execute(array("%$motclef%" ));
-
-    $res = $req_search->fetchAll();
 
 ?>
 
@@ -41,8 +21,8 @@
     
 <main>
 
+<a href="index.php"><h1>MA RECHERCHE.COM</h1></a> 
 
-    <h1>MA RECHERCHE.COM</h1>
 
 <div id="div_recherche">
 
@@ -53,7 +33,7 @@
         <div id="resultat_autocompl"></div>
     </div>
     </div>
-    <button>Recherche</button>
+    <button id="boutton_recherche">Recherche</button>
 
 </div>
 

@@ -13,18 +13,17 @@
 <main>
 
 
-    <h1>MA RECHERCHE.COM</h1>
+   <a href="index.php"><h1>MA RECHERCHE.COM</h1></a> 
 
 <div id="div_recherche">
 
-
     <div>
-    <div id="conteneur_input_resultat_autocompl">
-        <input id="input_recherche" type="text" nom="recherche">
-        <div id="resultat_autocompl"></div>
+      <div id="conteneur_input_resultat_autocompl">
+          <input id="input_recherche" type="text" nom="recherche">
+          <div id="resultat_autocompl"></div>
+      </div>
     </div>
-    </div>
-    <button>Recherche</button>
+    <button id="boutton_recherche">Recherche</button>
 
 </div>
 
