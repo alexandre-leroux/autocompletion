@@ -20,7 +20,7 @@ $resultat = moteur_de_recherche_element();
 
 
 
-<a href="index.php"><h1>MA RECHERCHE.COM</h1></a> 
+<a id="titre_principal" href="index.php">MA RECHERCHE.COM</a> 
 
 <div id="div_recherche">
 

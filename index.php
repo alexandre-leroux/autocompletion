@@ -12,8 +12,9 @@
     
 <main>
 
-
-<a href="index.php"><h1>MA RECHERCHE.COM</h1></a> 
+<div id="conteneur_titre">
+  <a id="titre_principal" href="index.php">MA RECHERCHE.COM</a>  
+</div>
 
 <div id="div_recherche">
 
