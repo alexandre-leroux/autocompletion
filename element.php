@@ -20,24 +20,32 @@ $resultat = moteur_de_recherche_element();
 
 
 
-<a id="titre_principal" href="index.php">MA RECHERCHE.COM</a> 
+
+<div id="conteneur_titre">
+  <a id="titre_principal" href="index.php">MA RECHERCHE.COM</a>  
+</div>
 
 <div id="div_recherche">
 
-    <div>
+    <img id="loupe" src="style/loupe.svg" alt="">
+ 
       <div id="conteneur_input_resultat_autocompl">
           <input id="input_recherche" type="text" nom="recherche">
           <div id="resultat_autocompl"></div>
       </div>
-    </div>
+
     <button id="boutton_recherche">Recherche</button>
 
 </div>
 
 
+
+
 <section id="resultatrecherche_element">
-<h1><?=$resultat['nom_complet'];?></h1>
-<p><?=$resultat['bio'];?></p>
+  <div id="conteneur_elements">
+    <h1><?=$resultat['nom_complet'];?></h1>
+    <p><?=$resultat['bio'];?></p>
+  </div>
 </section>
 
 

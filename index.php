@@ -18,12 +18,13 @@
 
 <div id="div_recherche">
 
-    <div>
+    <img id="loupe" src="style/loupe.svg" alt="">
+ 
       <div id="conteneur_input_resultat_autocompl">
           <input id="input_recherche" type="text" nom="recherche">
           <div id="resultat_autocompl"></div>
       </div>
-    </div>
+
     <button id="boutton_recherche">Recherche</button>
 
 </div>
