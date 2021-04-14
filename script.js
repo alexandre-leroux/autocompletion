@@ -33,13 +33,14 @@ input.addEventListener("keyup", function(e){
                     {
                         console.log(dataType)
                         tableau = dataType[i].bio
-                        const indexOfFirst = tableau.toLowerCase().indexOf(donnees);
+                        var indexOfFirst = tableau.toLowerCase().indexOf(donnees);
                         console.log(indexOfFirst)
 
-                        const petit_extrait = tableau.substr(730, 40)
+                        debut = indexOfFirst - 10
+                        var petit_extrait = tableau.substr(debut, 40)
                         console.log(petit_extrait)
                         
-                        $('#resultat_autocompl').append("<div class='result_auto'>"+dataType[i].nom_complet +"</div>");
+                        $('#resultat_autocompl').append("<div class='result_auto'>"+dataType[i].nom_complet +"<span class='petit_extrait'>..."+petit_extrait+"...</span></div>");
                         i++
                     }
                 
