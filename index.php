@@ -13,7 +13,7 @@
 <main>
 
 
-   <a href="index.php"><h1>MA RECHERCHE.COM</h1></a> 
+<a href="index.php"><h1>MA RECHERCHE.COM</h1></a> 
 
 <div id="div_recherche">
 
