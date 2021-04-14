@@ -6,7 +6,7 @@ var input = document.getElementById("input_recherche")
 // ------------------------------------------------fonction sur les touches, lance une recherche dans la bdd à chaque touche utilisée
 input.addEventListener("keyup", function(e){
 
-    console.log(e)
+    // console.log(e)
     if(e.code == 'Enter' || e.code == "NumpadEnter" )
     {
         mot_clef_input = document.getElementById("input_recherche").value
@@ -31,16 +31,16 @@ input.addEventListener("keyup", function(e){
                     let i = 0;
                     while ( i < dataType.length)
                     {
-                        console.log(dataType)
+                        // console.log(dataType)
                         tableau = dataType[i].bio
                         var indexOfFirst = tableau.toLowerCase().indexOf(donnees);
-                        console.log(indexOfFirst)
+                        // console.log(indexOfFirst)
 
                         debut = indexOfFirst - 10
                         var petit_extrait = tableau.substr(debut, 40)
-                        console.log(petit_extrait)
+                        // console.log(petit_extrait)
                         
-                        $('#resultat_autocompl').append("<div class='result_auto'>"+dataType[i].nom_complet +"<span class='petit_extrait'>..."+petit_extrait+"...</span></div>");
+                        $('#resultat_autocompl').append("<div class='result_auto'><p class='p_titre_autocompl'>"+dataType[i].nom_complet +"</p><span class='petit_extrait'>..."+petit_extrait+"...</span></div>");
                         i++
                     }
                 
@@ -72,19 +72,36 @@ input.addEventListener("keyup", function(e){
 
 // ----------------------------------------------recupère les div crées sur la recherche, en autocompletion. Delay pour l'excuter en dernier, une fois les DOM modifié
 function finChargement() {
+
     setTimeout(function() {
 
-        div_generees_boucle = document.querySelectorAll("#resultat_autocompl  div") 
+        p_generees_boucle = document.querySelectorAll("div.result_auto p") 
 
-        for (var i = 0, len = div_generees_boucle.length; i < len; i++) {
+        for (var i = 0, len = p_generees_boucle.length; i < len; i++) {
 
-            div_generees_boucle[i].addEventListener('click', function(e){
-
+            p_generees_boucle[i].addEventListener('click', function(e){
+                console.log (p_generees_boucle[i]) 
                 var get = e.path[0].innerHTML
+                console.log(e.path[0].innerHTML)
                 window.location.replace("recherche.php?key="+get+"");
-
+                return
             });
         }
+        
+        span_generees_boucle = document.querySelectorAll("div.result_auto span") 
+
+        for (var i = 0, len = span_generees_boucle.length; i < len; i++) {
+
+            span_generees_boucle[i].addEventListener('click', function(e){
+                console.log (p_generees_boucle[i]) 
+                var get = e.path[1].childNodes[0].innerHTML
+                console.log(e.path[1].childNodes[0].innerHTML)
+                console.log(e)
+                window.location.replace("recherche.php?key="+get+"");
+                return
+            });
+        }
+
 
     }, 80); // on retarde l'exécution de 1 seconde
 }
@@ -99,6 +116,7 @@ function finChargement() {
 // ---------- + recherche impossible sir input vide
 document.addEventListener('click', function(e){
 
+    // console.log(e)
         if (e.toElement.id == "input_recherche")
         {
         }

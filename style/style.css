@@ -70,16 +70,28 @@ input:focus{
     justify-content: flex-start;
     align-items: center;
     border-radius: 15px;
+    display: flex;
 
 }
 .result_auto:hover{
     cursor: pointer;
     background-color: rgb(240, 240, 240);
 }
+.p_titre_autocompl{
+width: 50%;
+height: 100%;
+display: flex;
+align-items: center;
+}
+
 .petit_extrait{
     font-size: 0.7rem;
     color: rgb(190, 190, 190);
     margin-left: 5px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
 }
 
 /* -----------------------------page recherche------------------------------------ */
