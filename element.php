@@ -22,7 +22,7 @@ $resultat = moteur_de_recherche_element();
 
 
 <div id="conteneur_titre">
-  <a id="titre_principal" href="index.php">MA RECHERCHE.COM</a>  
+  <a id="titre_principal" href="index.php">my <span id="couleur_titre">TENNIS</span>search.com</a>  
 </div>
 
 <div id="div_recherche">
