@@ -134,7 +134,7 @@ text-overflow: ellipsis;
 
 /* ----------------------page élément ------------------------- */
 #resultatrecherche_element{
-    width: 100vw;
+    /* width: 100vw; */
     margin-top: 10vh;
     /* background-color: cyan; */
     display: flex;
