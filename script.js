@@ -31,7 +31,15 @@ input.addEventListener("keyup", function(e){
                     let i = 0;
                     while ( i < dataType.length)
                     {
-                        $('#resultat_autocompl').append("<div  class='result_auto'>"+dataType[i].nom_complet +"</div>");
+                        console.log(dataType)
+                        tableau = dataType[i].bio
+                        const indexOfFirst = tableau.toLowerCase().indexOf(donnees);
+                        console.log(indexOfFirst)
+
+                        const petit_extrait = tableau.substr(730, 40)
+                        console.log(petit_extrait)
+                        
+                        $('#resultat_autocompl').append("<div class='result_auto'>"+dataType[i].nom_complet +"</div>");
                         i++
                     }
                 
