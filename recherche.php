@@ -41,7 +41,7 @@ $res = moteur_de_recherche_get();
         while ( $res[$i] != null)
         {?>
             <div id="div_resultat_recherche_boucle">
-                <a id="titre_result_recherche" href="element.php?id=<?=$res[$i]['id'];?>"><?=$res[$i]['prénom']; ?> <?=$res[$i]['nom']; ?></a>
+                <a id="titre_result_recherche" href="element.php?id=<?=$res[$i]['id'];?>"><?=$res[$i]['nom_complet']; ?></a>
                 <p id="resume_bio_result_recherche"><?=$res[$i]['bio']; ?></p>
             </div>
 
