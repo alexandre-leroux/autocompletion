@@ -1,16 +1,14 @@
 
 
 
-var input = document.getElementById("input_recherche")
 
 // ------------------------------------------------fonction sur les touches, lance une recherche dans la bdd à chaque touche utilisée
+var input = document.getElementById("input_recherche")
 input.addEventListener("keyup", function(e){
 
-    // console.log(e)
     if(e.code == 'Enter' || e.code == "NumpadEnter" )
     {
         mot_clef_input = document.getElementById("input_recherche").value
-        console.log(mot_clef_input)
         window.location.replace("recherche.php?key="+mot_clef_input+"");
     }
     else
@@ -31,14 +29,10 @@ input.addEventListener("keyup", function(e){
                     let i = 0;
                     while ( i < dataType.length)
                     {
-                        // console.log(dataType)
                         tableau = dataType[i].bio
                         var indexOfFirst = tableau.toLowerCase().indexOf(donnees);
-                        console.log(indexOfFirst)
-
                         debut = indexOfFirst
                         var petit_extrait = tableau.substr(debut, 40)
-                        console.log(petit_extrait)
                         
                         $('#resultat_autocompl').append("<div class='result_auto'><p class='p_titre_autocompl'>"+dataType[i].nom_complet +"</p><span class='petit_extrait'>..."+petit_extrait+"...</span></div>");
                         i++
@@ -61,7 +55,6 @@ input.addEventListener("keyup", function(e){
         else
         {
             $('#resultat_autocompl').empty();
-    
         }
     
         finChargement()
@@ -70,7 +63,7 @@ input.addEventListener("keyup", function(e){
 
 })
 
-// ----------------------------------------------recupère les div crées sur la recherche, en autocompletion. Delay pour l'excuter en dernier, une fois les DOM modifié
+// ---------------------recupère les div crées sur la recherche, en autocompletion. Delay pour l'excuter en dernier, une fois les DOM modifié
 function finChargement() {
 
     setTimeout(function() {
@@ -80,9 +73,7 @@ function finChargement() {
         for (var i = 0, len = p_generees_boucle.length; i < len; i++) {
 
             p_generees_boucle[i].addEventListener('click', function(e){
-                console.log (p_generees_boucle[i]) 
                 var get = e.path[0].innerHTML
-                console.log(e.path[0].innerHTML)
                 window.location.replace("recherche.php?key="+get+"");
                 return
             });
@@ -102,11 +93,8 @@ function finChargement() {
             });
         }
 
-
     }, 80); // on retarde l'exécution de 1 seconde
 }
-
-
 
 
 

@@ -16,7 +16,6 @@ function moteur_de_recherche_element()
         $req_search->execute(array("$id"));
         $res = $req_search->fetch();
         
-        // var_dump($res);
         return $res;
 
 

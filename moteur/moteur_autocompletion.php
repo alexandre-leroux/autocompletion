@@ -23,7 +23,6 @@ function moteur_de_recherche()
 
         $res_total = $res + $res_2;
         echo json_encode($res_total);
-        // return $res_total;
 
 
     }
@@ -31,39 +30,6 @@ function moteur_de_recherche()
 
 moteur_de_recherche();
 
-
-
-// function moteur_de_recherche()
-//     {
-
-//         $bdd = connection_bdd();
-//         $motclef = $_POST['motclef'];
-//         // var_dump($_POST['motclef']);
-//         // echo '</br>';
-
-//         $req_search = $bdd->prepare("SELECT * FROM sportifs WHERE nom_complet LIKE ? LIMIT 8 ");
-//         $req_search->execute(array("%$motclef%"));
-//         $res = $req_search->fetchAll();
-
-//         if($res != null)
-//         {
-//             echo json_encode($res);
-//         }
-
-
-//         else
-//         {
-//             $req_search = $bdd->prepare("SELECT * FROM sportifs WHERE bio LIKE ? LIMIT 8 ");
-//             $req_search->execute(array("%$motclef%"));
-//             $res = $req_search->fetchAll();
-//             echo json_encode($res);
-//         }
-
-
-//     }
-
-
-// moteur_de_recherche();
 
 
 
