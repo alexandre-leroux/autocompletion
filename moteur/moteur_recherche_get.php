@@ -16,8 +16,8 @@ function moteur_de_recherche_get()
         $req_search->execute(array("%$motclef_secure%"));
         $res = $req_search->fetchAll();
         
-        $req_search_2 = $bdd->prepare("SELECT * FROM sportifs WHERE bio LIKE ?  ");
-        $req_search_2->execute(array("%$motclef_secure%"));
+        $req_search_2 = $bdd->prepare("SELECT * FROM sportifs WHERE bio LIKE ? AND nom_complet NOT LIKE ?  ");
+        $req_search_2->execute(array("%$motclef_secure%","%$motclef_secure%"));
         $res_2 = $req_search_2->fetchAll();
 
 
